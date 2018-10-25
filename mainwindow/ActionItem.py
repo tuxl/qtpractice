@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QSizePoli
 class ActionItem(QWidget):
     def __init__(self, p, title, callback):
         super(ActionItem, self).__init__(p)
-        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        # self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         layout = QHBoxLayout()
         name = QLabel(title)
         bt = QPushButton("启动")

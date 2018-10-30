@@ -22,6 +22,8 @@ class MainWindow(QMainWindow):
         tb.addAction(openAction)
         tb.insertSeparator(openAction)
 
+        self.statusBar().showMessage("状态栏 hello world")
+
     def oepn(self):
         box = QMessageBox()
         box.setText("我的测试box")

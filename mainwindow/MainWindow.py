@@ -18,6 +18,9 @@ class MainWindow(QMainWindow):
         openAction.triggered.connect(self.oepn)
         openAction.setIcon(QIcon(":/img/open.png"))
         fm.addAction(openAction)
+        tb = self.addToolBar("file")
+        tb.addAction(openAction)
+        tb.insertSeparator(openAction)
 
     def oepn(self):
         box = QMessageBox()

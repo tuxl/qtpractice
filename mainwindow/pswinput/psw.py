@@ -9,12 +9,12 @@ from .custominput import CustomInput
 class Psw(QDialog):
     def __init__(self, p):
         super(Psw,self).__init__(p)
-        print("aaaaa")
         self.pswInput = QLineEdit(self)
         self.pswInput.setContextMenuPolicy(Qt.NoContextMenu)
         self.pswInput.setPlaceholderText("请输入密码")
         self.pswInput.setEchoMode(QLineEdit.Password)
         self.pswInput.installEventFilter(self)
+        self.resize(300,300)
 
     def eventFilter(self, obj, ev):
         if obj == self.pswInput:

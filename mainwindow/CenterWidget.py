@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QDialog
-from ActionItem import ActionItem
+from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton
 from pswinput.psw import Psw
 from filechooser.FileChooseDia import FileChooseDia
 
@@ -8,10 +7,10 @@ class CenterWidget(QWidget):
     def __init__(self, p):
         super(CenterWidget,self).__init__(p)
 
-        self.centralLayout = QVBoxLayout()
+        self.centralLayout = QGridLayout()
         self.addActItem()
         self.setLayout(self.centralLayout)
-        self.centralLayout.addStretch()
+        self.centralLayout.setColumnStretch(0,1)
 
     def addActItem(self):
         actions = [
@@ -24,8 +23,12 @@ class CenterWidget(QWidget):
                 'callback':self.fileChoose,
             },
         ]
-        for item in actions:
-            self.centralLayout.addWidget(ActionItem(self, item['name'], item['callback']))
+        for k, item in enumerate(actions, 1) :
+            lb = QLabel(item['name'])
+            bt = QPushButton("启动")
+            bt.clicked.connect(item['callback'])
+            self.centralLayout.addWidget(lb, k, 0)
+            self.centralLayout.addWidget(bt, k, 1)
 
     def passwordProcess(self):
         dia = Psw(self)

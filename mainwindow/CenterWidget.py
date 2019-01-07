@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton
+from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton, QVBoxLayout
 from pswinput.psw import Psw
 from filechooser.FileChooseDia import FileChooseDia
 
 class CenterWidget(QWidget):
     def __init__(self, p):
         super(CenterWidget,self).__init__(p)
-
+        vl = QVBoxLayout()
         self.centralLayout = QGridLayout()
         self.addActItem()
-        self.setLayout(self.centralLayout)
         self.centralLayout.setColumnStretch(0,1)
+        vl.addLayout(self.centralLayout)
+        vl.addStretch()
+        self.setLayout(vl)
 
     def addActItem(self):
         actions = [
